@@ -8,5 +8,8 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
-EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+# Expose the application port (Render uses PORT dynamically)
+EXPOSE 10000
+
+# Run the application and pass environment variables (for secrets)
+CMD ["sh", "-c", "java -jar app.jar --server.port=${PORT:-10000}"]
