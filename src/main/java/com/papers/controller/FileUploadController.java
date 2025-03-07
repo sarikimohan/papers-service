@@ -15,7 +15,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class FileUploadController {
 
-    @Autowired private final S3Service s3Service;
+    @Autowired private S3Service s3Service;
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
