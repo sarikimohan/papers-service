@@ -19,7 +19,6 @@ import java.time.Duration;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class S3Service {
 
     @Value("${aws.s3.bucket-name}")
