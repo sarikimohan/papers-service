@@ -2,6 +2,7 @@ package com.papers.controller;
 
 import com.papers.service.S3Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class FileUploadController {
 
+    @Autowired
     private final S3Service s3Service;
 
     @PostMapping("/upload")
