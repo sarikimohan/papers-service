@@ -8,6 +8,12 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
+
+# Set environment variables for AWS credentials
+ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+ENV MONGO_URL=${MONGO_URL}
+
 # Expose the application port (Render uses PORT dynamically)
 EXPOSE 10000
 
